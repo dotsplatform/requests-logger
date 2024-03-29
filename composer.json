@@ -1,0 +1,37 @@
+{
+    "name": "dotsplatform/requests-logger",
+    "description": "Library for requests logger",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Dotsplatform\\RequestsLogger\\": "src/",
+            "Dots\\": "library/Dots/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bogdan Mamontov",
+            "email": "bohdan.mamontov@dotsplatform.com"
+        }
+    ],
+    "require": {
+        "php" : "^8.2",
+        "ext-json": "*",
+        "laravel/framework": "^10.13",
+        "guzzlehttp/guzzle": "^7.5.",
+        "illuminate/support": "^9.|^10.",
+        "dotsplatform/utils": "^2.",
+        "opensearch-project/opensearch-php": "^2.2",
+        "ramsey/uuid": "^4.7",
+        "monolog/monolog": "^3.5"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.",
+        "eduarguz/shift-php-cs": "^3.0"
+    },
+    "scripts": {
+        "init-pre-commit": [
+            "cp .git-hooks-pre-commit .git/hooks/pre-commit"
+        ]
+    }
+}
