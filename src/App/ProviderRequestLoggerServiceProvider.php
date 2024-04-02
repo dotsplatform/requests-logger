@@ -11,6 +11,7 @@ use Dotsplatform\RequestsLogger\DTO\RequestLoggerChannel;
 use Dotsplatform\RequestsLogger\LaravelLogger\LaravelProviderRequestsLogger;
 use Dotsplatform\RequestsLogger\OpensearchLogger\OpensearchProviderRequestsLogger;
 use Illuminate\Support\ServiceProvider;
+use Monolog\Logger;
 use OpenSearch\Client;
 use OpenSearch\ClientBuilder;
 
@@ -26,7 +27,11 @@ class ProviderRequestLoggerServiceProvider extends ServiceProvider
         $this->app->singleton(ProviderRequestsLogger::class, function () {
             $channel = config('requests-logger.default');
             if ($channel === RequestLoggerChannel::SYSTEM) {
-                return app(LaravelProviderRequestsLogger::class);
+                return app(LaravelProviderRequestsLogger::class, [
+                    'logger' => app(Logger::class, [
+                        'name' => $channel,
+                    ])
+                ]);
             }
             if ($channel === RequestLoggerChannel::OPENSEARCH) {
                 return app(OpensearchProviderRequestsLogger::class);
