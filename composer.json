@@ -4,8 +4,9 @@
     "type": "library",
     "autoload": {
         "psr-4": {
-            "Dotsplatform\\RequestsLogger\\": "src/",
-            "Dots\\": "library/Dots/"
+            "Dotsplatform\\RequestsLogger\\": "src/App",
+            "Dots\\": "library/Dots/",
+            "Tests\\": "tests/"
         }
     },
     "authors": [
@@ -27,11 +28,19 @@
     },
     "require-dev": {
         "phpstan/phpstan": "^1.",
-        "eduarguz/shift-php-cs": "^3.0"
+        "eduarguz/shift-php-cs": "^3.0",
+        "phpunit/phpunit": "^10.|9.*"
     },
     "scripts": {
         "init-pre-commit": [
             "cp .git-hooks-pre-commit .git/hooks/pre-commit"
         ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dotsplatform\\RequestsLogger\\ProviderRequestLoggerServiceProvider"
+            ]
+        }
     }
 }
