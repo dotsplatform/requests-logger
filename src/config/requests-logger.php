@@ -13,7 +13,7 @@ return [
         ],
 
         'opensearch' => [
-            'hosts' => explode(',', env('OPENSEARCH_HOSTS')),
+            'hosts' => explode(',', env('OPENSEARCH_HOSTS', '')),
             'username' => env('OPENSEARCH_USERNAME'),
             'password' => env('OPENSEARCH_PASSWORD'),
             'indexes' => [

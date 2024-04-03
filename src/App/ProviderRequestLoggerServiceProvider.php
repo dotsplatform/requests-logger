@@ -17,7 +17,7 @@ use OpenSearch\ClientBuilder;
 
 class ProviderRequestLoggerServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         $this->bindLoggerClient();
     }
