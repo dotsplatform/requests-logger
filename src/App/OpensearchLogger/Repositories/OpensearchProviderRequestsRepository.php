@@ -87,7 +87,6 @@ class OpensearchProviderRequestsRepository
         $params = [
             'index' => $this->getIndexName(),
             'id' => $dto->getId(),
-            'entity_id' => $dto->getEntityId(),
             'body' => [
                 'trace_id' => $dto->getTraceId(),
                 'account' => $dto->getAccount(),
@@ -99,7 +98,6 @@ class OpensearchProviderRequestsRepository
                 'url' => $dto->getUrl(),
                 'headers' => $dto->getHeaders(),
                 'body' => $dto->getBody(),
-                'request_data' => $dto->getRequestData(),
                 'response_code' => $dto->getResponseCode(),
                 'response_body' => $dto->getResponseBody(),
                 'duration_ms' => $dto->getDurationMs(),
