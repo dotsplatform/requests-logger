@@ -16,6 +16,8 @@ class ProviderRequestDTO extends Entity
 
     protected ?string $trace_id;
 
+    protected string $entityId;
+
     protected int $created_time;
 
     protected ?string $env;
@@ -33,6 +35,8 @@ class ProviderRequestDTO extends Entity
     protected array $headers = [];
 
     protected array $body = [];
+
+    protected array $request_data = [];
 
     protected int $response_code;
 
@@ -117,4 +121,15 @@ class ProviderRequestDTO extends Entity
     {
         return $this->duration_ms;
     }
+
+    public function getEntityId(): string
+    {
+        return $this->entityId;
+    }
+
+    public function getRequestData(): array
+    {
+        return $this->request_data;
+    }
+
 }

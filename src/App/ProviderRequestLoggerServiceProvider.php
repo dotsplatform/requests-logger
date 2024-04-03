@@ -17,9 +17,16 @@ use OpenSearch\ClientBuilder;
 
 class ProviderRequestLoggerServiceProvider extends ServiceProvider
 {
-    public function register(): void
+    public function register()
     {
         $this->bindLoggerClient();
+    }
+
+    public function boot(): void
+    {
+        $this->publishes([
+            __DIR__ . '/../config/requests-logger.php' => config_path('requests-logger.php'),
+        ], 'config');
     }
 
     private function bindLoggerClient(): void

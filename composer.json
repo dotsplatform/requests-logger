@@ -20,7 +20,6 @@
         "ext-json": "*",
         "laravel/framework": "^10.13",
         "guzzlehttp/guzzle": "^7.5.",
-        "illuminate/support": "^9.|^10.",
         "dotsplatform/utils": "^2.",
         "opensearch-project/opensearch-php": "^2.2",
         "ramsey/uuid": "^4.7",
