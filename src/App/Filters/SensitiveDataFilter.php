@@ -18,7 +18,14 @@ class SensitiveDataFilter
         foreach ($data as $key => $value) {
             if ($this->isSensitiveKey($key)) {
                 $data[$key] = self::SECRET;
-            } elseif (is_array($value)) {
+                continue;
+            }
+
+            if (is_null($value)) {
+                continue;
+            }
+
+            if (is_array($value)) {
                 $data[$key] = $this->filter($value);
             } elseif ($this->isUrl($value)) {
                 $data[$key] = $this->cleanUrlParams($value);
