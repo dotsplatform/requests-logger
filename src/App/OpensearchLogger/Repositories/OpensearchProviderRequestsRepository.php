@@ -89,6 +89,7 @@ class OpensearchProviderRequestsRepository
             'id' => $dto->getId(),
             'body' => [
                 'trace_id' => $dto->getTraceId(),
+                'entity_id' => $dto->getEntityId(),
                 'account' => $dto->getAccount(),
                 'env' => $dto->getEnv(),
                 'provider' => $dto->getProvider(),

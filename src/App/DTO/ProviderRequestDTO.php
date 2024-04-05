@@ -16,6 +16,8 @@ class ProviderRequestDTO extends Entity
 
     protected ?string $trace_id;
 
+    protected ?string $entityId;
+
     protected int $created_time;
 
     protected ?string $env;
@@ -56,6 +58,11 @@ class ProviderRequestDTO extends Entity
     public function getTraceId(): ?string
     {
         return $this->trace_id;
+    }
+
+    public function getEntityId(): ?string
+    {
+        return $this->entityId;
     }
 
     public function getCreatedTime(): int
