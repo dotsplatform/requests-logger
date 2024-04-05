@@ -7,11 +7,14 @@
 
 namespace Dotsplatform\RequestsLogger;
 
+use Dotsplatform\RequestsLogger\Console\Commands\Opensearch\CreateProviderRequestIndexOpensearchCommand;
+use Dotsplatform\RequestsLogger\Console\Commands\Opensearch\DeleteOldLogsOpensearchCommand;
+use Dotsplatform\RequestsLogger\Console\Commands\Opensearch\SearchLoggedItemsOpensearchCommand;
 use Dotsplatform\RequestsLogger\DTO\RequestLoggerChannel;
 use Dotsplatform\RequestsLogger\LaravelLogger\LaravelProviderRequestsLogger;
 use Dotsplatform\RequestsLogger\OpensearchLogger\OpensearchProviderRequestsLogger;
+use Illuminate\Log\LogManager;
 use Illuminate\Support\ServiceProvider;
-use Monolog\Logger;
 use OpenSearch\Client;
 use OpenSearch\ClientBuilder;
 
@@ -25,8 +28,14 @@ class ProviderRequestLoggerServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__ . '/../config/requests-logger.php' => config_path('requests-logger.php'),
+            __DIR__.'/../config/requests-logger.php' => config_path('requests-logger.php'),
         ], 'config');
+
+        $this->commands([
+            CreateProviderRequestIndexOpensearchCommand::class,
+            DeleteOldLogsOpensearchCommand::class,
+            SearchLoggedItemsOpensearchCommand::class,
+        ]);
     }
 
     private function bindLoggerClient(): void
@@ -35,9 +44,7 @@ class ProviderRequestLoggerServiceProvider extends ServiceProvider
             $channel = config('requests-logger.default');
             if ($channel === RequestLoggerChannel::SYSTEM) {
                 return app(LaravelProviderRequestsLogger::class, [
-                    'logger' => app(Logger::class, [
-                        'name' => $channel,
-                    ])
+                    'logger' => new LogManager($this->app),
                 ]);
             }
             if ($channel === RequestLoggerChannel::OPENSEARCH) {

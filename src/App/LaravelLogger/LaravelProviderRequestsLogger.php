@@ -9,28 +9,20 @@ namespace Dotsplatform\RequestsLogger\LaravelLogger;
 
 use Dotsplatform\RequestsLogger\DTO\ProviderRequestDTO;
 use Dotsplatform\RequestsLogger\ProviderRequestsLogger;
-use Monolog\Handler\StreamHandler;
-use Monolog\Level;
-use Monolog\Logger;
+use Psr\Log\LoggerInterface;
+use Psr\Log\LogLevel;
 
 class LaravelProviderRequestsLogger implements ProviderRequestsLogger
 {
     public function __construct(
-        private readonly Logger $logger,
+        private readonly LoggerInterface $logger,
     ) {
     }
 
     public function log(ProviderRequestDTO $dto): void
     {
-        $this->logger->pushHandler(
-            new StreamHandler(
-                config('requests-logger.channels.file.path'),
-                Level::Info,
-            )
-        );
-
         $this->logger->log(
-            Level::Info,
+            LogLevel::INFO,
             $this->generateMessage($dto),
             $dto->toArray(),
         );

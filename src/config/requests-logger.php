@@ -7,6 +7,8 @@ return [
 
     'default' => env('REQUESTS_LOGGER_CHANNEL', RequestLoggerChannel::NULL),
 
+    'sensitive_keys' => explode(',', env('REQUESTS_LOGGER_SENSITIVE_KEYS', '')),
+
     'channels' => [
         'file' => [
             'path' => env('REQUESTS_LOGGER_PATH', storage_path('logs/requests.log')),

@@ -74,7 +74,6 @@ class SensitiveDataFilter
             'key',
             'apiKey',
             'password',
-            'token',
             'secret',
         ];
     }
