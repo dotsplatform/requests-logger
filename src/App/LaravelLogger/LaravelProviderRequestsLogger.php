@@ -12,11 +12,12 @@ use Dotsplatform\RequestsLogger\ProviderRequestsLogger;
 use Monolog\Handler\StreamHandler;
 use Monolog\Level;
 use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 
 class LaravelProviderRequestsLogger implements ProviderRequestsLogger
 {
     public function __construct(
-        private readonly Logger $logger,
+        private readonly LoggerInterface $logger,
     ) {
     }
 
