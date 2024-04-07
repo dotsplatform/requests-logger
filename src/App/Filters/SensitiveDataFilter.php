@@ -63,7 +63,21 @@ class SensitiveDataFilter
 
     private function isSensitiveKey(string $key): bool
     {
-        return Str::contains(Str::lower($key), $this->sensitiveKeys());
+        $customSensitiveKeys = [];
+        if (env('APP_ENV') !== 'testing') {
+            $customSensitiveKeys = config('requests-logger.sensitive_keys');
+        }
+
+        if (! is_array($customSensitiveKeys)) {
+            $customSensitiveKeys = [];
+        }
+
+        $sensitiveKeys = array_unique(array_merge(
+            $customSensitiveKeys,
+            $this->sensitiveKeys(),
+        ));
+
+        return Str::contains(Str::lower($key), $sensitiveKeys);
     }
 
     private function sensitiveKeys(): array
