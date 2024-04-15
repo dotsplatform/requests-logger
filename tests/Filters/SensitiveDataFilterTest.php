@@ -18,6 +18,30 @@ class SensitiveDataFilterTest extends TestCase
         return app(SensitiveDataFilter::class);
     }
 
+    public function testFilterExpectsClientSensitiveKeysUsed(): void
+    {
+        config()->set('requests-logger.sensitive_keys', 'clientKey,clientKey2');
+        $data = [
+            'method' => 'GET',
+            'provider' => 'google',
+            'clientKey' => 'value',
+            'data' => [
+                'clientKey2' => 'value2',
+            ],
+        ];
+        $result = $this->getSensitiveDataFilter()->filter($data);
+        $expected = [
+            'method' => 'GET',
+            'provider' => 'google',
+            'clientKey' => SensitiveDataFilter::SECRET,
+            'data' => [
+                'clientKey2' => SensitiveDataFilter::SECRET,
+            ],
+        ];
+
+        $this->assertEquals($expected, $result);
+    }
+
     /**
      * @dataProvider getTestFilterData
      */

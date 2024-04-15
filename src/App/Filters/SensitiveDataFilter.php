@@ -68,6 +68,16 @@ class SensitiveDataFilter
 
     private function sensitiveKeys(): array
     {
+        $clientSensitiveKeys = config('requests-logger.sensitive_keys', []);
+        if (! is_array($clientSensitiveKeys)) {
+            return $this->getBaseSensitiveKeys();
+        }
+
+        return array_merge($this->getBaseSensitiveKeys(), $clientSensitiveKeys);
+    }
+
+    private function getBaseSensitiveKeys(): array
+    {
         return [
             'name',
             'email',

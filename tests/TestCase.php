@@ -8,7 +8,7 @@
 namespace Tests;
 
 use Illuminate\Support\Str;
-use PHPUnit\Framework\TestCase as BaseTestCase;
+use Orchestra\Testbench\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
 {

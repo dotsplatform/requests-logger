@@ -28,7 +28,8 @@
     "require-dev": {
         "phpstan/phpstan": "^1.",
         "eduarguz/shift-php-cs": "^3.0",
-        "phpunit/phpunit": "^10.|9.*"
+        "phpunit/phpunit": "^10.|9.*",
+        "orchestra/testbench": "^8.17"
     },
     "scripts": {
         "init-pre-commit": [
