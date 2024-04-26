@@ -62,7 +62,8 @@ class OpensearchProviderRequestsRepository
                             'type' => 'integer',
                         ],
                         'response_body' => [
-                            'type' => 'nested',
+                            'type' => 'object',
+                            'dynamic' => true,
                         ],
                         'duration_ms' => [
                             'type' => 'integer',
