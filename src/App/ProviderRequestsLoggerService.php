@@ -9,12 +9,12 @@ namespace Dotsplatform\RequestsLogger;
 
 use Dotsplatform\RequestsLogger\DTO\ProviderRequestDTO;
 use Dotsplatform\RequestsLogger\Filters\ProviderRequestSensitiveDataFilter;
-use Dotsplatform\RequestsLogger\Jobs\LogProviderRequestsJob;
 
 class ProviderRequestsLoggerService
 {
     public function __construct(
         private readonly ProviderRequestSensitiveDataFilter $providerRequestSensitiveDataFilter,
+        private readonly ProviderRequestsLogger $providerRequestsLogger
     ) {
     }
 
@@ -24,6 +24,6 @@ class ProviderRequestsLoggerService
             return;
         }
         $dto = $this->providerRequestSensitiveDataFilter->filter($dto);
-        LogProviderRequestsJob::dispatch($dto);
+        $this->providerRequestsLogger->log($dto);
     }
 }
