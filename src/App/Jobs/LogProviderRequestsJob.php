@@ -9,17 +9,9 @@ namespace Dotsplatform\RequestsLogger\Jobs;
 
 use Dotsplatform\RequestsLogger\DTO\ProviderRequestDTO;
 use Dotsplatform\RequestsLogger\ProviderRequestsLogger;
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
 
-class LogProviderRequestsJob implements ShouldQueue
+class LogProviderRequestsJob extends Job
 {
-    use Dispatchable;
-    use InteractsWithQueue;
-    use Queueable;
-
     public function __construct(
         private readonly ProviderRequestDTO $dto,
     ) {
