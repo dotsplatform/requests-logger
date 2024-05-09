@@ -37,7 +37,8 @@ class ProviderRequestsLoggerService
         $serializedDto = serialize($dto);
         $dtoLength = strlen($serializedDto);
         if ($dtoLength / 1024 > Job::MAX_SIZE_KB) {
-            Log::info('Request DTO size is more than ' . Job::MAX_SIZE_KB, $dto->toArray());
+            Log::info('Request DTO size is more than '.Job::MAX_SIZE_KB, $dto->toArray());
+
             return true;
         }
 
