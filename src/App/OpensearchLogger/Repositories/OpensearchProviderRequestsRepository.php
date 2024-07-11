@@ -62,8 +62,7 @@ class OpensearchProviderRequestsRepository
                             'type' => 'integer',
                         ],
                         'response_body' => [
-                            'type' => 'object',
-                            'dynamic' => true,
+                            'type' => 'text',
                         ],
                         'duration_ms' => [
                             'type' => 'integer',

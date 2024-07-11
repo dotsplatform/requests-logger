@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 class AddTraceIdHeader
 {
     public const TRACE_ID_HEADER = 'X-Trace-Id';
+
     /**
      * Handle an incoming request.
      */
@@ -24,8 +25,10 @@ class AddTraceIdHeader
         if (! $id) {
             $this->generateId($request);
         }
+
         return $next($request);
     }
+
     private function generateId(Request $request): void
     {
         $request->headers->set('X-Trace-Id', Uuid::uuid7()->toString());
