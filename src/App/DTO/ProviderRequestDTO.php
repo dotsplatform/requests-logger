@@ -34,7 +34,7 @@ class ProviderRequestDTO extends Entity
 
     protected array $headers = [];
 
-    protected array $body = [];
+    protected string $body;
 
     protected int $response_code;
 
@@ -105,7 +105,7 @@ class ProviderRequestDTO extends Entity
         return $this->headers;
     }
 
-    public function getBody(): array
+    public function getBody(): ?string
     {
         return $this->body;
     }
