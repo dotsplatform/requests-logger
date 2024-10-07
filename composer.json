@@ -16,11 +16,11 @@
         }
     ],
     "require": {
-        "php" : "^8.2",
+        "php" : "^8.3",
         "ext-json": "*",
         "laravel/framework": "^11.0",
         "guzzlehttp/guzzle": "^7.5.",
-        "dotsplatform/utils": "^2.",
+        "dotsplatform/utils": "^2.3",
         "opensearch-project/opensearch-php": "^2.2",
         "ramsey/uuid": "^4.7",
         "monolog/monolog": "^3.5"
