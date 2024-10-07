@@ -53,7 +53,7 @@ class OpensearchProviderRequestsRepository
                             'type' => 'keyword',
                         ],
                         'body' => [
-                            'type' => 'object',
+                            'type' => 'text',
                         ],
                         'headers' => [
                             'type' => 'object',
