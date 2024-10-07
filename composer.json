@@ -18,7 +18,7 @@
     "require": {
         "php" : "^8.2",
         "ext-json": "*",
-        "laravel/framework": "^10.13",
+        "laravel/framework": "^11.0",
         "guzzlehttp/guzzle": "^7.5.",
         "dotsplatform/utils": "^2.",
         "opensearch-project/opensearch-php": "^2.2",
@@ -29,7 +29,7 @@
         "phpstan/phpstan": "^1.",
         "eduarguz/shift-php-cs": "^3.0",
         "phpunit/phpunit": "^10.|9.*",
-        "orchestra/testbench": "^8.17"
+        "orchestra/testbench": "^9.5"
     },
     "scripts": {
         "init-pre-commit": [
