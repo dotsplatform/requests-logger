@@ -34,7 +34,7 @@ class ProviderRequestDTO extends Entity
 
     protected array $headers = [];
 
-    protected string $body;
+    protected ?string $body;
 
     protected int $response_code;
 
