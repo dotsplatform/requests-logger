@@ -29,7 +29,7 @@
         "phpstan/phpstan": "^1.",
         "eduarguz/shift-php-cs": "^3.0",
         "phpunit/phpunit": "^10.|9.*",
-        "orchestra/testbench": "^9.1"
+        "orchestra/testbench": "^9.5"
     },
     "scripts": {
         "init-pre-commit": [

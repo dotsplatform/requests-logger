@@ -34,11 +34,11 @@ class ProviderRequestDTO extends Entity
 
     protected array $headers = [];
 
-    protected array $body = [];
+    protected ?string $body;
 
     protected int $response_code;
 
-    protected ?array $response_body;
+    protected ?string $response_body;
 
     protected int $duration_ms = 0;
 
@@ -105,7 +105,7 @@ class ProviderRequestDTO extends Entity
         return $this->headers;
     }
 
-    public function getBody(): array
+    public function getBody(): ?string
     {
         return $this->body;
     }
@@ -115,7 +115,7 @@ class ProviderRequestDTO extends Entity
         return $this->response_code;
     }
 
-    public function getResponseBody(): ?array
+    public function getResponseBody(): ?string
     {
         return $this->response_body;
     }
