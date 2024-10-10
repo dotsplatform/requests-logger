@@ -147,6 +147,52 @@ class SensitiveDataFilterTest extends TestCase
                     ],
                 ],
             ],
+            'replaced json' => [
+                [
+                    'method' => 'GET',
+                    'provider' => 'google',
+                    'url' => 'https://google.com/geocode?key=secret&apiKey=secret',
+                    'name' => SensitiveDataFilter::SECRET,
+                    'password' => SensitiveDataFilter::SECRET,
+                    'token' => 'token',
+                    'apiToken' => 'apiToken',
+                    'api_key' => SensitiveDataFilter::SECRET,
+                    'secret' => SensitiveDataFilter::SECRET,
+                    'body' => json_encode([
+                        'apiKey' => 'secret',
+                        'key' => 'secret',
+                    ]),
+                    'data' => [
+                        'name' => SensitiveDataFilter::SECRET,
+                        'method' => 'GET',
+                        'password' => SensitiveDataFilter::SECRET,
+                        'token' => 'token',
+                        'secret' => SensitiveDataFilter::SECRET,
+                    ],
+                ],
+                [
+                    'method' => 'GET',
+                    'provider' => 'google',
+                    'url' => 'https://google.com/geocode?key=343&apiKey=aasd31234sdas',
+                    'name' => 'Adaam',
+                    'password' => '123456',
+                    'token' => 'token',
+                    'apiToken' => 'apiToken',
+                    'api_key' => Str::random(),
+                    'secret' => Str::random(),
+                    'body' => json_encode([
+                        'apiKey' => 'abc',
+                        'key' => '1234',
+                    ]),
+                    'data' => [
+                        'name' => Str::random(),
+                        'method' => 'GET',
+                        'password' => Str::random(),
+                        'token' => 'token',
+                        'secret' => Str::random(),
+                    ],
+                ],
+            ],
         ];
     }
 }

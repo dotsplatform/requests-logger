@@ -25,6 +25,14 @@ class SensitiveDataFilter
                 continue;
             }
 
+            if ($this->isJson($value)) {
+                $decodedValue = json_decode($value, true);
+                if (is_array($decodedValue)) {
+                    $data[$key] = json_encode($this->filter($decodedValue));
+                }
+                continue;
+            }
+
             if (is_array($value)) {
                 $data[$key] = $this->filter($value);
             } elseif ($this->isUrl($value)) {
@@ -74,6 +82,15 @@ class SensitiveDataFilter
         }
 
         return array_merge($this->getBaseSensitiveKeys(), $clientSensitiveKeys);
+    }
+
+    private function isJson($value): bool
+    {
+        if (! is_string($value)) {
+            return false;
+        }
+
+        return json_validate($value);
     }
 
     private function getBaseSensitiveKeys(): array
