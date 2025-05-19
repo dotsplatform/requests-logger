@@ -36,6 +36,7 @@ class OpensearchProviderRequestsRepository
                         ],
                         'created_time' => [
                             'type' => 'date',
+                            'format' => 'epoch_millis',
                         ],
                         'account' => [
                             'type' => 'keyword',
