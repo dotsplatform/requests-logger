@@ -24,6 +24,10 @@ class LogProviderRequestsJob extends Job
 
     public function handle(): void
     {
-        $this->getLogger()->log($this->dto);
+        try {
+            $this->getLogger()->log($this->dto);
+        } catch (\Exception $e) {
+            
+        }
     }
 }
